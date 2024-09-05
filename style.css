@@ -1,0 +1,172 @@
+*,
+*:before,
+*:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #236ac8, #ea7f14);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    color: #d7dbe0;
+    font-size: 80px;
+    text-shadow: 3px 3px 3px #938e88;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container {
+    border: 2px solid white;
+    width: 40%;
+    min-width: 450px;
+    padding: 30px 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+#newtask {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    background-color: #ffffff;
+    padding: 30px 20px;
+    border-radius: 5px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#newtask input {
+    width: 70%;
+    height: 45px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    border: 2px solid #d1d3d4;
+    padding: 12px;
+    color: #111;
+    font-weight: 500;
+    border-radius: 5px;
+}
+
+#newtask input:focus {
+    outline: none;
+    border: 2px solid;
+    border-image: linear-gradient(135deg, #236ac8, #ea7f14) 1;
+}
+
+#newtask button {
+    width: 25%;
+    height: 45px;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    background: #d1d3d4; 
+    border: none;
+    color: #111; 
+    cursor: pointer;
+    outline: none;
+}
+
+
+#newtask button:hover {
+    color: #fff;
+    background: linear-gradient(135deg, #236ac8, #ea7f14);
+}
+
+#newtask button:active {
+    transform: scale(0.95); 
+    background: linear-gradient(135deg, #236ac8, #ea7f14); 
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); 
+}
+
+#tasks {
+    background-color: #ffffff;
+    padding: 30px 20px;
+    margin-top: 60px;
+    border-radius: 10px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    width: 100%;
+}
+
+.task {
+    background-color: #ffffff;
+    height: 50px;
+    padding: 5px 10px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #d1d3d4;
+    cursor: pointer;
+}
+
+.task span {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.task button {
+    background-color: #d1d3d4; 
+    color: #ffffff;
+    height: 100%;
+    width: 40px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.task button:hover{
+    background: linear-gradient(135deg, #236ac8, #ea7f14);
+}
+
+.task button:active {
+    transform: scale(0.95); 
+    background: linear-gradient(135deg, #236ac8, #ea7f14); 
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); 
+}
+
+.completed {
+    position: relative; 
+    color: inherit;
+    animation: sparkle 1s ease-in-out infinite;
+}
+
+.completed span {
+    text-decoration: line-through;
+    text-decoration-color: red;
+    display: inline;
+}
+
+.completed .task-text {
+    display: inline; 
+    vertical-align: middle; 
+}
+
+.completed span::after {
+    content: ' 👏';
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: middle; 
+    text-decoration: none; 
+}
+
+
+@keyframes sparkle {
+    0% { color: #fff; }
+    50% { color: #ffd700; }
+    100% { color: #fff; }
+}
+
