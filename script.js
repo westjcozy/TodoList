@@ -216,5 +216,27 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+function updateClock() {
+    let now = new Date();
+    let year = now.getFullYear(); // 년도 추가
+    let month = now.getMonth() + 1; // 월 추가 (0부터 시작하므로 +1)
+    let day = now.getDate(); // 일 추가
+    let hours = now.getHours();
+    let minutes = now.getMinutes();
+    let seconds = now.getSeconds();
+
+    // 시, 분, 초를 두 자리로 맞춤
+    hours = hours < 10 ? '0' + hours : hours;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+    month = month < 10 ? '0' + month : month; // 월을 두 자리로 맞춤
+    day = day < 10 ? '0' + day : day; // 일도 두 자리로 맞춤
+
+    // 현재 시간을 #clock-display에 표시
+    clockDisplay.textContent = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+}
+
+// 매 초마다 현재 시간 업데이트
+setInterval(updateClock, 1000);
 
 

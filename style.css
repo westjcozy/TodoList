@@ -193,12 +193,12 @@ h1 {
 }
 
 #clock-display {
-    font-size: 90px;
+    font-size: 60px;
     font-weight: bold;
     background: linear-gradient(135deg, #65afe0, #d2ba59);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-top: 50px;
+    margin-top: 40px;
 }
 
 /* 뽀모도로 타이머 */
