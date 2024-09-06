@@ -1,35 +1,44 @@
-*,
-*:before,
-*:after {
+/* 기본 스타일 리셋 */
+*, *:before, *:after {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
+/* 배경 및 레이아웃 설정 */
 body {
     height: 100vh;
     background: linear-gradient(135deg, #236ac8, #ea7f14);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    overflow: hidden;
+    padding-left: 5%;
 }
 
 h1 {
     color: #d7dbe0;
-    font-size: 80px;
+    font-size: 70px;
     text-shadow: 3px 3px 3px #938e88;
-    text-align: center;
+    text-align: left;
     margin-bottom: 20px;
+    width: 100%;
+    margin-left: 180px;
 }
 
+/* 할 일 목록 */
 .container {
     border: 2px solid white;
-    width: 40%;
-    min-width: 450px;
+    width: 50%;
+    min-width: 700px;
     padding: 30px 40px;
     background-color: rgba(255, 255, 255, 0.1);
-    text-align: center;
+    text-align: left;
+    border-radius: 10px;
+    height: auto;
+    margin-right: auto;
+    margin-left: 0;
 }
 
 #newtask {
@@ -41,9 +50,6 @@ h1 {
     padding: 30px 20px;
     border-radius: 5px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 #newtask input {
@@ -71,13 +77,12 @@ h1 {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-size: 16px;
-    background: #d1d3d4; 
+    background: #d1d3d4;
     border: none;
-    color: #111; 
+    color: #111;
     cursor: pointer;
     outline: none;
 }
-
 
 #newtask button:hover {
     color: #fff;
@@ -85,19 +90,23 @@ h1 {
 }
 
 #newtask button:active {
-    transform: scale(0.95); 
-    background: linear-gradient(135deg, #236ac8, #ea7f14); 
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); 
+    transform: scale(0.95);
+    background: linear-gradient(135deg, #236ac8, #ea7f14);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* 할 일 목록 스타일 */
 #tasks {
     background-color: #ffffff;
     padding: 30px 20px;
-    margin-top: 60px;
+    margin-top: 20px;
     border-radius: 10px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
     width: 100%;
+    max-height: 50px; /* 하나의 항목만 보이도록 높이를 제한 */
+    overflow-y: auto; /* 항목이 넘칠 경우 세로 스크롤 활성화 */
 }
+
 
 .task {
     background-color: #ffffff;
@@ -118,7 +127,7 @@ h1 {
 }
 
 .task button {
-    background-color: #d1d3d4; 
+    background-color: #d1d3d4;
     color: #ffffff;
     height: 100%;
     width: 40px;
@@ -128,18 +137,18 @@ h1 {
     outline: none;
 }
 
-.task button:hover{
+.task button:hover {
     background: linear-gradient(135deg, #236ac8, #ea7f14);
 }
 
 .task button:active {
-    transform: scale(0.95); 
-    background: linear-gradient(135deg, #236ac8, #ea7f14); 
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); 
+    transform: scale(0.95);
+    background: linear-gradient(135deg, #236ac8, #ea7f14);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* 완료된 할 일 */
 .completed {
-    position: relative; 
     color: inherit;
     animation: sparkle 1s ease-in-out infinite;
 }
@@ -147,22 +156,7 @@ h1 {
 .completed span {
     text-decoration: line-through;
     text-decoration-color: red;
-    display: inline;
 }
-
-.completed .task-text {
-    display: inline; 
-    vertical-align: middle; 
-}
-
-.completed span::after {
-    content: ' 👏';
-    display: inline-block;
-    margin-left: 5px;
-    vertical-align: middle; 
-    text-decoration: none; 
-}
-
 
 @keyframes sparkle {
     0% { color: #fff; }
@@ -170,3 +164,223 @@ h1 {
     100% { color: #fff; }
 }
 
+/* 레이아웃 그리드 */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 두 개의 열 */
+    gap: 20px;
+    max-width: 912px;
+    width: 100%;
+    margin-top: 30px;
+    margin-left: 0;
+    margin-right: auto;
+}
+
+/* 시계 및 뽀모도로 섹션 */
+#clock, #editor-container {
+    border: 2px solid white;
+    padding: 10px;
+    height: 90%;
+    background-color: transparent;
+    border-radius: 10px;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 1px;s
+}
+
+#clock {
+    margin-bottom: 100px;
+}
+
+#clock-display {
+    font-size: 90px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #65afe0, #d2ba59);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 50px;
+}
+
+/* 뽀모도로 타이머 */
+#pomodoro {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#timer-display {
+    font-size: 80px;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #f0e68c, #ff6347);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#pomodoro button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 10px 20px;
+    background: #236ac8;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    margin: 0 5px;
+    border-radius: 5px;
+}
+
+#pomodoro button:hover {
+    color: #fff;
+    background: linear-gradient(135deg, #65afe0, #d2ba59);
+}
+
+#pomodoro button:active {
+    transform: scale(0.95);
+}
+
+/* 시간 입력 필드 */
+#time-inputs input {
+    width: 60px;
+    padding: 10px;
+    text-align: center;
+    border: 2px solid transparent;
+    border-image: linear-gradient(135deg, #f0e68c, #ff6347) 1;
+    border-radius: 5px;
+    background-color: transparent;
+    font-size: 16px;
+    color: black;
+    transition: border-color 0.3s ease;
+}
+
+/* 노트 섹션 */
+#editor-container {
+    max-width: 700px;
+    max-height: 100%;
+    width: 100%;
+    height: 90%; /* 현재 크기 유지 */
+    margin: 20px auto;
+    margin-top: 2px;
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* 스크롤을 사용하여 기능 표시 */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* 요소 간의 공간을 균등하게 */
+}
+
+.emoji {
+    font-size: 1.5em;
+}
+
+.gradient-text {
+    font-size: 50px;
+    background: linear-gradient(135deg, #65afe0, #d2ba59);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+/* Quill 에디터 영역 */
+#editor {
+    height: 150px; /* 고정된 높이로 유지 */
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-y: auto; /* 에디터에 스크롤 추가 */
+}
+
+#toolbar {
+    margin-bottom: 10px;
+}
+
+/* 제목 입력 필드 */
+#note-title {
+    width: 100%;
+    height: 5%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* 노트 리스트 */
+#notes-list {
+    display: flex; /* 플렉스박스를 사용하여 가로 배열 */
+    flex-wrap: nowrap; /* 가로로만 배열, 줄바꿈 없음 */
+    max-height: 80px; /* 높이 제한 */
+    overflow-x: auto; /* 가로 스크롤 활성화 */
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+
+.note-item {
+    min-width: 150px; /* 각 노트 항목의 최소 너비 */
+    max-width: 200px; /* 각 노트 항목의 최대 너비 */
+    margin-right: 10px; /* 각 항목 간의 간격 */
+    height: fit-content;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-shrink: 0; /* 노트가 줄어들지 않도록 설정 */
+    position: relative; /* 삭제 버튼을 해당 노트 항목 내부에 배치 */
+}
+
+/* 삭제 버튼 스타일 */
+.delete-note {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 5px 10px;
+    background-color: #ff6347; /* 삭제 버튼을 눈에 띄게 설정 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-note:hover {
+    background-color: #e5533d; /* 호버 상태에서 삭제 버튼 색상 변경 */
+}
+
+.note-item strong {
+    font-size: 16px;
+    display: block;
+}
+
+.note-item p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+/* 저장 및 리셋 버튼 스타일 */
+#save-note, #reset-note {
+    display: inline-block;
+    height: auto;
+    padding: 5px 5px;
+    font-size: 15px;
+    background-color: #236ac8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+#save-note:hover, #reset-note:hover {
+    background: linear-gradient(135deg, #65afe0, #d2ba59);
+}

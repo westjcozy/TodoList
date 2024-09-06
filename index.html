@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Simple To Do List</title>
+    <title>My Productivity Tools</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>My ToDo-List</h1>
+    <h1>My Productivity Tools</h1>
+    
     <div class="container">
         <div id="newtask">
             <input type="text" placeholder="Task to be done..">
@@ -22,6 +23,67 @@
         </div>
         <div id="tasks"></div>
     </div>
+
+    <div class="grid-container">
+        <!-- 시계 및 뽀모도로 타이머 섹션 -->
+        <div id="clock">
+            <div id="current-time"></div>
+            <p id="clock-display">00:00:00</p>
+            <div id="pomodoro">
+                <div id="time-inputs">
+                    <input type="number" id="minutes-input" placeholder="Minutes" min="0" max="59" value="25">
+                    <span>:</span>
+                    <input type="number" id="seconds-input" placeholder="Seconds" min="0" max="59" value="00">
+                </div>
+                <p id="timer-display">25:00</p>
+                <button id="start-timer">Start</button>
+                <button id="reset-timer">Reset</button>
+            </div>
+        </div>
+
+        <!-- 노트 섹션 -->
+        <div id="editor-container">
+            <h2><span class="emoji">📝</span> <span class="gradient-text">Notes</span></h2>
+        
+            <!-- 제목 입력 필드 -->
+            <input type="text" id="note-title" placeholder="Enter note title" />
+        
+            <div id="toolbar">
+                <button class="ql-bold"></button>
+                <button class="ql-italic"></button>
+                <button class="ql-underline"></button>
+                <button class="ql-strike"></button>
+                <button class="ql-header" value="1"></button>
+                <button class="ql-header" value="2"></button>
+                <button class="ql-list" value="ordered"></button>
+                <button class="ql-list" value="bullet"></button>
+                <button class="ql-code-block"></button>
+            </div>
+        
+            <div id="editor"></div> <!-- Quill 에디터 영역 -->
+        
+            <!-- 노트 저장 및 리셋 버튼 -->
+            <button id="save-note">Save Note</button>
+            <button id="reset-note">Reset</button>
+        
+            <!-- 노트 리스트 -->
+            <div id="notes-list"></div>
+        </div>
+        
+    </div>
+
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Quill.js 편집기 초기화
+            var quill = new Quill('#editor', {
+                theme: 'snow',
+                modules: {
+                    toolbar: '#toolbar'
+                }
+            });
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
