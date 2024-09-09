@@ -11,10 +11,11 @@ body {
     background: linear-gradient(135deg, #236ac8, #ea7f14);
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-start;
     overflow: hidden;
     padding-left: 5%;
+    padding:
 }
 
 h1 {
@@ -24,7 +25,7 @@ h1 {
     text-align: left;
     margin-bottom: 20px;
     width: 100%;
-    margin-left: 180px;
+    margin-left: 550px;
 }
 
 /* 할 일 목록 */
@@ -72,7 +73,7 @@ h1 {
 
 #newtask button {
     width: 25%;
-    height: 45px;
+    height: 30px;
     border-radius: 5px;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
@@ -98,8 +99,9 @@ h1 {
 /* 할 일 목록 스타일 */
 #tasks {
     background-color: #ffffff;
-    padding: 30px 20px;
+    padding: 5px 20px;
     margin-top: 20px;
+    margin-bottom: 0;
     border-radius: 10px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
     width: 100%;
@@ -112,11 +114,10 @@ h1 {
     background-color: #ffffff;
     height: 50px;
     padding: 5px 10px;
-    margin-top: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 2px solid #d1d3d4;
+    border-bottom: 1px solid #d1d3d4;
     cursor: pointer;
 }
 
@@ -129,7 +130,7 @@ h1 {
 .task button {
     background-color: #d1d3d4;
     color: #ffffff;
-    height: 100%;
+    height: 80%;
     width: 40px;
     border-radius: 5px;
     border: none;
@@ -147,6 +148,23 @@ h1 {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
+.clap-emoji {
+    margin-left: 5px;
+    display: inline-block;
+    unicode-bidi: isolate;
+    text-decoration: none;
+    font-style: normal;
+    user-select: none;
+    pointer-events: none;
+    lang: "zxx"; /* 이 요소에 대해 언어를 설정하지 않음 */
+    spellcheck: false;
+}
+
+.clap-emoji::after {
+    content: attr(data-emoji); /* data-emoji 속성에 있는 이모티콘을 추가 */
+    margin-left: 5px;
+}
+
 /* 완료된 할 일 */
 .completed {
     color: inherit;
@@ -156,6 +174,10 @@ h1 {
 .completed span {
     text-decoration: line-through;
     text-decoration-color: red;
+}
+
+.completed .clap-emoji {
+    text-decoration: none; /* 완료된 항목에도 이모티콘에 줄이 그어지지 않도록 함 */
 }
 
 @keyframes sparkle {
@@ -274,6 +296,16 @@ h1 {
     font-size: 1.5em;
 }
 
+.clap-emoji {
+    margin-left: 5px; /* 이모티콘과 텍스트 사이의 간격 */
+    display: inline-block;
+    text-decoration: none; /* 박수 이모티콘에 빨간줄이 생기지 않도록 텍스트 스타일링 제거 */
+    unicode-bidi: isolate; /* 이모티콘과 텍스트의 구분 */
+    font-style: normal; /* 텍스트 스타일을 일반으로 설정 */
+}
+
+
+
 .gradient-text {
     font-size: 50px;
     background: linear-gradient(135deg, #65afe0, #d2ba59);
@@ -344,7 +376,7 @@ h1 {
     position: absolute;
     top: 5px;
     right: 5px;
-    padding: 5px 10px;
+    padding: 5px 5px;
     background-color: #ff6347; /* 삭제 버튼을 눈에 띄게 설정 */
     color: white;
     border: none;
@@ -384,3 +416,68 @@ h1 {
 #save-note:hover, #reset-note:hover {
     background: linear-gradient(135deg, #65afe0, #d2ba59);
 }
+
+/* 캘린더만 오른쪽으로 고정시키기 */
+#calendar-container {
+    position: absolute; /* 캘린더를 고정 */
+    border: 2px solid white;
+    width: 780px; /* 캘린더의 너비를 줄여서 오른쪽 공간 확보 */
+    min-width: 500px; /* 최소 너비 조정 */
+    right: 70px; /* 오른쪽 공간을 줄이기 위해 right 값을 변경 */
+    top: 112px; /* 상단에서 약간 떨어진 위치에 배치 */
+    display: grid;
+    grid-template-rows: repeat(25, 1fr); /* 시간대 */
+    gap: 10px;
+    padding: 0;
+    background-color: transparent;
+    text-align: left;
+    height: auto;
+    margin-right: 10px;
+    border-radius: 10px;
+    max-height: 765px; /* 캘린더의 최대 높이 설정 */
+    overflow-y: auto; /* 높이를 넘어갈 경우 스크롤 표시 */
+    overflow-x: hidden; /* 가로 스크롤은 숨김 처리 */
+    margin: 0;
+
+/* 각 시간대 구분을 위한 줄 추가 */
+.time-slot {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0; /* 내부 공백을 없앰 */
+    margin: 0; /* 외부 공백을 없앰 */
+    padding-left: 5px; /* 좌측 패딩만 추가 */
+    background-color: rgba(255, 255, 255, 0.2);
+    font-size: 20px;
+    color: white;
+    box-sizing: border-box; /* padding과 border를 height 계산에 포함 */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* 마지막 시간대에는 줄을 추가하지 않음 */
+.time-slot:last-child {
+    border-bottom: none;
+}
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow-x: hidden;
+    justify-content: center; /* 컨텐츠를 화면 중앙에 배치 */
+    align-items: flex-start; /* 상단 정렬 */
+}
+
+
+
+
+
+
+
+
+
+
+
