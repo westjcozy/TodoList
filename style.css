@@ -42,6 +42,7 @@ h1 {
     margin-left: 0;
 }
 
+
 #newtask {
     display: flex;
     justify-content: space-between;
@@ -107,6 +108,8 @@ h1 {
     width: 100%;
     max-height: 50px; /* 하나의 항목만 보이도록 높이를 제한 */
     overflow-y: auto; /* 항목이 넘칠 경우 세로 스크롤 활성화 */
+    height: 50px;
+    overflow-y: auto;
 }
 
 
@@ -222,6 +225,7 @@ h1 {
     -webkit-text-fill-color: transparent;
     margin-top: 40px;
 }
+
 
 /* 뽀모도로 타이머 */
 #pomodoro {
@@ -471,6 +475,17 @@ body, html {
     align-items: flex-start; /* 상단 정렬 */
 }
 
+#clock, #editor-container, #calendar-container {
+    height: 90vh; /* 두 섹션 모두 동일한 높이로 설정 */
+}
+
+#calendar-container {
+    position: relative; /* 절대 위치 대신 상대 위치로 변경 */
+    height: 90vh; /* 뽀모도로와 동일한 높이 */
+    min-height: 500px; /* 최소 높이 */
+    max-height: 1000px; /* 최대 높이 */
+    overflow-y: auto; /* 높이를 넘어가면 스크롤 표시 */
+}
 
 
 
