@@ -81,25 +81,13 @@
             for (let i = 0; i < 24; i++) {
                 const timeSlot = document.createElement('div');  // time-slot div 생성
                 timeSlot.classList.add('time-slot');
-        
-                const timeText = document.createElement('span');  // 시간 표시할 span 생성
-                timeText.classList.add('time');
-        
-                // 시간대 결정 (24시간 형식)
-                let formattedHour = i < 10 ? `0${i}:00` : `${i}:00`;  // 한 자리수 시간을 두 자리로 포맷
-        
-                timeText.textContent = formattedHour;  // 시간대 표시
-        
-                // time-slot 안에 시간 텍스트 추가
-                timeSlot.appendChild(timeText);
-        
-                // calendar-container에 time-slot 추가
-                calendarContainer.appendChild(timeSlot);
-            }
+                let formattedHour = i < 10 ? `0${i}:00` : `${i}:00`;
+        timeSlot.setAttribute('data-time', formattedHour);
+        timeSlot.textContent = formattedHour;
+        calendarContainer.appendChild(timeSlot);
+    }
         });
     </script>
-    
-    
 
     <!-- Quill 에디터를 초기화하는 스크립트 -->
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>

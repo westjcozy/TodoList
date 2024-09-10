@@ -3,60 +3,102 @@ document.querySelector("#push").onclick = function () {
   let timeInput = document.querySelector('#newtask input[type="time"]');
   let categoryInput = document.querySelector("#newtask select");
 
-  if (taskInput.value.length == 0 || timeInput.value.length == 0) {
+  if (taskInput.value.length == 0 || timeInput.value.length === 0) {
     alert("Please enter both a task and time");
-  } else {
-    document.querySelector("#tasks").innerHTML += `
-            <div class="task" data-time="${timeInput.value}">
-                <span id="taskname" spellcheck="false">
-                    ${timeInput.value} - ${taskInput.value} [${categoryInput.value}]
-                </span>
-                <button class="delete">
-                    <i class="far fa-trash-alt"></i>
-                </button>
-            </div>
-        `;
+  }  else {
+    let taskTime = timeInput.value;  // 시간과 분을 포함한 값
+    let taskCategory = categoryInput.value;
 
-    var current_tasks = document.querySelectorAll(".delete");
-    for (var i = 0; i < current_tasks.length; i++) {
-      current_tasks[i].onclick = function () {
-        this.parentNode.remove();
-      };
+    // 새로운 일정 추가
+    const taskHTML = `
+        <div class="task" data-time="${taskTime}" data-category="${taskCategory}">
+            <span id="taskname">${timeInput.value} - ${taskInput.value} [${categoryInput.value}]</span>
+            <button class="delete"><i class="far fa-trash-alt"></i></button>
+        </div>`;
+    
+    document.querySelector("#tasks").innerHTML += taskHTML;
+
+    // 시간대에서 시간만 추출하여 타임슬롯 찾기
+    let calendarTimeSlot = document.querySelector(`.time-slot[data-time="${taskTime.substring(0, 2)}:00"]`);
+
+    if (calendarTimeSlot) {
+      let calendarTask = document.createElement("div");
+      calendarTask.classList.add("calendar-task");
+      calendarTask.textContent = `${taskInput.value} [${taskCategory}]`;
+      calendarTask.style.backgroundColor = getCategoryColor(taskCategory);
+      calendarTimeSlot.appendChild(calendarTask);
     }
-
-    var tasks = document.querySelectorAll(".task");
-    for (var i = 0; i < tasks.length; i++) {
-      tasks[i].onclick = function () {
-        this.classList.toggle("completed");
-        let taskName = this.querySelector("#taskname");
-
-        // 철자 검사를 비활성화
-        taskName.setAttribute("spellcheck", "false");
-
-        let clapEmoji = taskName.querySelector(".clap-emoji");
-        if (clapEmoji) {
-          clapEmoji.remove(); // 기존 이모티콘 삭제
-        }
-
-        if (this.classList.contains("completed")) {
-          // 박수 이모티콘을 추가
-          let emojiSpan = document.createElement("span");
-          emojiSpan.classList.add("clap-emoji");
-          emojiSpan.textContent = "👏";
-          emojiSpan.setAttribute("spellcheck", "false"); // 철자 검사 비활성화
-          emojiSpan.setAttribute("lang", "zxx"); // 언어 없음으로 설정
-          taskName.appendChild(emojiSpan); // 이모티콘 추가
-        }
-      };
-    }
-
+    
+    addDeleteFunctionality();
+    
     // 입력값 초기화
     taskInput.value = "";
     timeInput.value = "";
-
     sortTasksByTime();
   }
 };
+
+function getCategoryColor(category) {
+  switch (category) {
+    case 'work': return 'rgba(255, 182, 193, 0.8)';
+    case 'personal': return 'rgba(135, 206, 250, 0.8)';
+    case 'other': return 'rgba(144, 238, 144, 0.8)';
+    default: return 'rgba(255, 255, 255, 0.8)';
+  }
+}
+
+function addDeleteFunctionality() {
+  var current_tasks = document.querySelectorAll(".delete");
+  for (var i = 0; i < current_tasks.length; i++) {
+    current_tasks[i].onclick = function () {
+      this.parentNode.remove();
+    };
+  }
+
+  var tasks = document.querySelectorAll(".task");
+  for (var i = 0; i < tasks.length; i++) {
+    tasks[i].onclick = function () {
+      this.classList.toggle("completed");
+      let taskName = this.querySelector("#taskname");
+
+      // 철자 검사를 비활성화
+      taskName.setAttribute("spellcheck", "false");
+
+      let clapEmoji = taskName.querySelector(".clap-emoji");
+      if (clapEmoji) {
+        clapEmoji.remove(); // 기존 이모티콘 삭제
+      }
+
+      if (this.classList.contains("completed")) {
+        // 박수 이모티콘을 추가
+        let emojiSpan = document.createElement("span");
+        emojiSpan.classList.add("clap-emoji");
+        emojiSpan.textContent = "👏";
+        emojiSpan.setAttribute("spellcheck", "false"); // 철자 검사 비활성화
+        emojiSpan.setAttribute("lang", "zxx"); // 언어 없음으로 설정
+        taskName.appendChild(emojiSpan); // 이모티콘 추가
+      }
+    };
+  }
+}
+
+function handleDragStart(event) {
+  event.dataTransfer.setData('text/plain', event.target.outerHTML);
+  event.dataTransfer.dropEffect = 'move';
+  event.target.style.opacity = '0.4';
+}
+
+function handleDragOver(event) {
+  event.preventDefault();
+}
+
+function handleDrop(event) {
+  event.preventDefault();
+  let draggedTaskHTML = event.dataTransfer.getData('text/plain');
+  event.target.innerHTML += draggedTaskHTML; // 드롭한 영역에 추가
+  event.dataTransfer.clearData();
+  event.target.style.opacity = '1';
+}
 
 function sortTasksByTime() {
   let taskContainer = document.querySelector("#tasks");
@@ -130,9 +172,7 @@ resetButton.onclick = function () {
 function updateDisplay(seconds) {
   let minutes = Math.floor(seconds / 60);
   let remainingSeconds = seconds % 60;
-  timerDisplay.textContent = `${minutes < 10 ? "0" : ""}${minutes}:${
-    remainingSeconds < 10 ? "0" : ""
-  }${remainingSeconds}`;
+  timerDisplay.textContent = `${minutes < 10 ? "0" : ""}${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
 }
 
 // 현재 시간을 실시간으로 표시하는 함수
@@ -142,19 +182,18 @@ function updateClock() {
   let minutes = now.getMinutes();
   let seconds = now.getSeconds();
 
-  // 시, 분, 초를 두 자리로 맞춤
   hours = hours < 10 ? "0" + hours : hours;
   minutes = minutes < 10 ? "0" + minutes : minutes;
   seconds = seconds < 10 ? "0" + seconds : seconds;
 
-  // 현재 시간을 #clock-display에 표시
-  clockDisplay.textContent = `${hours}:${minutes}:${seconds}`;
+  document.getElementById("clock-display").textContent = `${hours}:${minutes}:${seconds}`;
 }
 
 // 매 초마다 현재 시간 업데이트
 setInterval(updateClock, 1000);
 
 document.addEventListener("DOMContentLoaded", function () {
+  
   // Quill.js 편집기 초기화
   var quill = new Quill("#editor", {
     theme: "snow",
@@ -240,25 +279,5 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-function updateClock() {
-  let now = new Date();
-  let year = now.getFullYear(); // 년도 추가
-  let month = now.getMonth() + 1; // 월 추가 (0부터 시작하므로 +1)
-  let day = now.getDate(); // 일 추가
-  let hours = now.getHours();
-  let minutes = now.getMinutes();
-  let seconds = now.getSeconds();
 
-  // 시, 분, 초를 두 자리로 맞춤
-  hours = hours < 10 ? "0" + hours : hours;
-  minutes = minutes < 10 ? "0" + minutes : minutes;
-  seconds = seconds < 10 ? "0" + seconds : seconds;
-  month = month < 10 ? "0" + month : month; // 월을 두 자리로 맞춤
-  day = day < 10 ? "0" + day : day; // 일도 두 자리로 맞춤
 
-  // 현재 시간을 #clock-display에 표시
-  clockDisplay.textContent = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-}
-
-// 매 초마다 현재 시간 업데이트
-setInterval(updateClock, 1000);
