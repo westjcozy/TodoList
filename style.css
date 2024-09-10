@@ -427,7 +427,7 @@ h1 {
 #calendar-container {
     position: absolute; /* 캘린더를 고정 */
     border: 2px solid white;
-    width: 780px; /* 캘린더의 너비를 줄여서 오른쪽 공간 확보 */
+    width: 800px; /* 캘린더의 너비를 줄여서 오른쪽 공간 확보 */
     min-width: 500px; /* 최소 너비 조정 */
     right: 70px; /* 오른쪽 공간을 줄이기 위해 right 값을 변경 */
     top: 112px; /* 상단에서 약간 떨어진 위치에 배치 */
