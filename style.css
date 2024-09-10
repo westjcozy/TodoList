@@ -15,51 +15,50 @@ body {
     align-items: flex-start;
     overflow: hidden;
     padding-left: 5%;
-}
+  }
 
 h1 {
     color: #d7dbe0;
-    font-size: 70px;
+    font-size: 3.7vw; /* 뷰포트 너비에 따라 폰트 크기가 변경됨 */
     text-shadow: 3px 3px 3px #938e88;
     text-align: left;
-    margin-bottom: 20px;
-    width: 100%;
-    margin-left: 550px;
+    margin-bottom: 0.5vh; /* 화면 높이에 비례한 여백 */
+    margin-left: 30vw;
 }
 
 /* 할 일 목록 */
 .container {
     border: 2px solid white;
-    width: 50%;
-    min-width: 700px;
-    padding: 30px 40px;
+    width: 100%;
+    height: 60vh;
+    max-width: 0vw; /* 최대 너비를 고정 */
+    min-width: 50vw; /* 최소 너비도 동일하게 고정 */
+    padding: 3.5vh;
     background-color: rgba(255, 255, 255, 0.1);
     text-align: left;
     border-radius: 10px;
-    height: auto;
-    margin-right: auto;
-    margin-left: 0;
+    margin-top: 2vh;
+    margin-bottom: 3.3vh;
 }
-
 
 #newtask {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    gap: 1vw;
     background-color: #ffffff;
-    padding: 30px 20px;
+    padding: 2vh 2vw;
     border-radius: 5px;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 1vh 2vh rgba(0, 0, 0, 0.3);
 }
 
 #newtask input {
     width: 70%;
-    height: 45px;
+    height: 5vh;
     font-family: 'Poppins', sans-serif;
-    font-size: 15px;
+    font-size: 2vh;
     border: 2px solid #d1d3d4;
-    padding: 12px;
+    padding: 1vh;
     color: #111;
     font-weight: 500;
     border-radius: 5px;
@@ -72,17 +71,16 @@ h1 {
 }
 
 #newtask button {
-    width: 25%;
-    height: 30px;
+    width: 20%;
+    height: 5vh;
     border-radius: 5px;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 2vh;
     background: #d1d3d4;
     border: none;
     color: #111;
     cursor: pointer;
-    outline: none;
 }
 
 #newtask button:hover {
@@ -93,7 +91,7 @@ h1 {
 #newtask button:active {
     transform: scale(0.95);
     background: linear-gradient(135deg, #236ac8, #ea7f14);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.2);
 }
 
 /* 할 일 목록 스타일 */
@@ -103,18 +101,16 @@ h1 {
     margin-top: 20px;
     margin-bottom: 0;
     border-radius: 10px;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 1vh 2vh rgba(0, 0, 0, 0.3);
     width: 100%;
-    max-height: 50px; /* 하나의 항목만 보이도록 높이를 제한 */
+    height: 100%;
+    max-height: 15vh; /* 하나의 항목만 보이도록 높이를 제한 */
     overflow-y: auto; /* 항목이 넘칠 경우 세로 스크롤 활성화 */
-    height: 50px;
-    overflow-y: auto;
 }
-
 
 .task {
     background-color: #ffffff;
-    height: 50px;
+    height: 10vh;
     padding: 5px 10px;
     display: flex;
     align-items: center;
@@ -131,7 +127,7 @@ h1 {
 
 .task button {
     background-color: #d1d3d4;
-    color: #ffffff;
+    color: white;
     height: 80%;
     width: 40px;
     border-radius: 5px;
@@ -190,43 +186,38 @@ h1 {
 
 /* 레이아웃 그리드 */
 .grid-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* 두 개의 열 */
-    gap: 10px;
-    max-width: 912px;
-    width: 80%;
-    margin-top: 10px;
-    margin-left: 0;
-    margin-right: auto;
-    height: auto;
+    display: flex; /* 플렉스 박스를 사용 */
+    justify-content: space-between; /* 두 섹션 사이의 공간을 분배 */
+    align-items: stretch; /* 높이를 동일하게 설정 */
+    width: 52.5%;
+    height: 90vh;;
+    max-height: 50vh; /* 두 섹션의 높이를 90vh로 설정 */
+    gap: 1vw; /* 두 섹션 사이의 간격 */
 }
 
 /* 시계 및 뽀모도로 섹션 */
 #clock, #editor-container {
     border: 2px solid white;
-    padding: 10px;
-    height: 700px;
+    padding: 2vh;
+    flex: 1; /* 플렉스 박스를 사용하여 공간을 동일하게 확장 */
     background-color: transparent;
     border-radius: 10px;
     text-align: center;
-    justify-content: center;
-    margin-bottom: 1px;
-    height: 513px;
+    height: 100%; /* 높이를 부모 컨테이너의 100%로 맞춤 */
 }
 
 #clock {
-    margin-bottom: 100px;
+    text-align: center;
 }
 
 #clock-display {
-    font-size: 60px;
+    font-size: 4vw;
     font-weight: bold;
     background: linear-gradient(135deg, #65afe0, #d2ba59);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-top: 40px;
+    margin-top: 0.5vh;
 }
-
 
 /* 뽀모도로 타이머 */
 #pomodoro {
@@ -235,7 +226,7 @@ h1 {
 }
 
 #timer-display {
-    font-size: 80px;
+    font-size: 8vh;
     margin-bottom: 10px;
     background: linear-gradient(135deg, #f0e68c, #ff6347);
     -webkit-background-clip: text;
@@ -273,29 +264,20 @@ h1 {
     border-image: linear-gradient(135deg, #f0e68c, #ff6347) 1;
     border-radius: 5px;
     background-color: transparent;
-    font-size: 16px;
+    font-size: 2vh;
     color: black;
     transition: border-color 0.3s ease;
 }
 
 /* 노트 섹션 */
 #editor-container {
-    max-width: 700px;
-    max-height: 90vh;
-    width: 100%;
-    height: 90%; /* 현재 크기 유지 */
-    margin: 20px auto;
-    margin-top: 2px;
+    max-width: 60vw;
+    he
+    margin: 2vh auto;
     background-color: transparent;
-    padding: 20px;
+    padding: 1vh;
     border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    overflow-y: auto; /* 스크롤을 사용하여 기능 표시 */
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* 요소 간의 공간을 균등하게 */
-    height: 513px;
+    overflow-y: auto;
 }
 
 .emoji {
@@ -309,8 +291,6 @@ h1 {
     unicode-bidi: isolate; /* 이모티콘과 텍스트의 구분 */
     font-style: normal; /* 텍스트 스타일을 일반으로 설정 */
 }
-
-
 
 .gradient-text {
     font-size: 50px;
@@ -351,7 +331,7 @@ h1 {
 #notes-list {
     display: flex; /* 플렉스박스를 사용하여 가로 배열 */
     flex-wrap: nowrap; /* 가로로만 배열, 줄바꿈 없음 */
-    max-height: 80px; /* 높이 제한 */
+    height: 80px; /* 높이 제한 */
     overflow-x: auto; /* 가로 스크롤 활성화 */
     padding: 10px;
     background-color: #f9f9f9;
@@ -425,25 +405,26 @@ h1 {
 
 /* 캘린더만 오른쪽으로 고정시키기 */
 #calendar-container {
+    width: 100%;
+    height: 100%;
+    min-height: 8vh;
+    max-height: 87.2vh;
     position: absolute; /* 캘린더를 고정 */
     border: 2px solid white;
-    width: 800px; /* 캘린더의 너비를 줄여서 오른쪽 공간 확보 */
-    min-width: 500px; /* 최소 너비 조정 */
-    right: 70px; /* 오른쪽 공간을 줄이기 위해 right 값을 변경 */
-    top: 112px; /* 상단에서 약간 떨어진 위치에 배치 */
+    width: 12vh; /* 캘린더의 너비를 줄여서 오른쪽 공간 확보 */
+    min-width: 80vh; /* 최소 너비 조정 */
+    max-width: 100vh;
+    right: 6vw; /* 오른쪽 공간을 줄이기 위해 right 값을 변경 */
+    top: 12.8vh; /* 상단에서 약간 떨어진 위치에 배치 */
     display: grid;
-    grid-template-rows: repeat(25, 1fr); /* 시간대 */
-    gap: 10px;
-    padding: 0;
+    grid-template-rows: repeat(24, 1fr); /* 시간대 */
     background-color: transparent;
     text-align: left;
-    height: auto;
-    margin-right: 10px;
+    margin-right: -2vh;
     border-radius: 10px;
-    max-height: 765px; /* 캘린더의 최대 높이 설정 */
     overflow-y: auto; /* 높이를 넘어갈 경우 스크롤 표시 */
     overflow-x: hidden; /* 가로 스크롤은 숨김 처리 */
-    margin: 0;
+    flex: 1;
 
 /* 각 시간대 구분을 위한 줄 추가 */
 .time-slot {
@@ -455,10 +436,11 @@ h1 {
     padding: 0; /* 내부 공백을 없앰 */
     margin: 0; /* 외부 공백을 없앰 */
     padding-left: 5px; /* 좌측 패딩만 추가 */
-    background-color: rgba(255, 255, 255, 0.2);
-    font-size: 20px;
+    background-color: transparent;
+    font-size: 1.5vw;
     color: white;
     box-sizing: border-box; /* padding과 border를 height 계산에 포함 */
+    padding-left: 5px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
@@ -469,16 +451,18 @@ h1 {
 body, html {
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     display: flex;
+    justify-content: center;
+    align-items: center;
     overflow-x: hidden;
-    justify-content: center; /* 컨텐츠를 화면 중앙에 배치 */
-    align-items: flex-start; /* 상단 정렬 */
+    font-size: calc(16px + 0.5vw);
 }
 
 #clock, #editor-container, #calendar-container {
     height: 90vh; /* 두 섹션 모두 동일한 높이로 설정 */
+    width: 80vw;
 }
 
 #calendar-container {
@@ -487,6 +471,13 @@ body, html {
     min-height: 500px; /* 최소 높이 */
     max-height: 1000px; /* 최대 높이 */
     overflow-y: auto; /* 높이를 넘어가면 스크롤 표시 */
+    display: grid;
+    grid-template-rows: repeat(24, 1fr); /* 24시간 스케줄 */
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    
 }
 
 .calendar-task {
@@ -498,12 +489,31 @@ body, html {
     color: black;
   }
   
+  /* 작은 모바일 장치 (최대 768px) */
+@media (max-width: 768px) {
+    body {
+        font-size: 4vw;
+    }
+}
 
+/* 태블릿 (768px ~ 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    body {
+        font-size: 2.5vw;
+    }
+}
 
+/* 작은 데스크탑 화면 (1025px ~ 1440px) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+    body {
+        font-size: 1.5vw;
+    }
+}
 
-
-
-
-
-
+/* 매우 큰 화면 (1441px 이상) */
+@media (min-width: 1441px) {
+    body {
+        font-size: 1vw;
+    }
+}
 
