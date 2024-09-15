@@ -1,519 +1,536 @@
 /* 기본 스타일 리셋 */
-*, *:before, *:after {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+*,
+*:before,
+*:after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 /* 배경 및 레이아웃 설정 */
 body {
-    height: 100vh;
-    background: linear-gradient(135deg, #236ac8, #ea7f14);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    overflow: hidden;
-    padding-left: 5%;
-  }
+  font-size: 1rem;
+  height: 100vh;
+  background: linear-gradient(135deg, #236ac8, #ea7f14);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  overflow: hidden;
+  padding-left: 28%;
+}
 
 h1 {
-    color: #d7dbe0;
-    font-size: 3.7vw; /* 뷰포트 너비에 따라 폰트 크기가 변경됨 */
-    text-shadow: 3px 3px 3px #938e88;
-    text-align: left;
-    margin-bottom: 0.5vh; /* 화면 높이에 비례한 여백 */
-    margin-left: 30vw;
+  color: #d7dbe0;
+  font-size: 4.2rem; /* 뷰포트 너비에 따라 폰트 크기가 변경됨 */
+  text-shadow: 3px 3px 3px #938e88;
+  text-align: left;
+  margin-top: 3vh;
+  margin-left: 5vw;
+  margin-bottom: 2vh;
 }
 
 /* 할 일 목록 */
 .container {
-    border: 2px solid white;
-    width: 100%;
-    height: 60vh;
-    max-width: 0vw; /* 최대 너비를 고정 */
-    min-width: 50vw; /* 최소 너비도 동일하게 고정 */
-    padding: 3.5vh;
-    background-color: rgba(255, 255, 255, 0.1);
-    text-align: left;
-    border-radius: 10px;
-    margin-top: 2vh;
-    margin-bottom: 3.3vh;
+  border: 2px solid white;
+  width: 100%;
+  height: 100%;
+  max-height: 90vh;
+  min-height: 0vh;
+  max-width: 47%; /* 최대 너비를 고정 */
+  min-width: 36%; /* 최소 너비도 동일하게 고정 */
+  padding: 3vh 3vh 3vh 3vh;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  margin-bottom: 3vh;
+  margin-left: 5vw;
+  margin-right: auto;
 }
 
 #newtask {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1vw;
-    background-color: #ffffff;
-    padding: 2vh 2vw;
-    border-radius: 5px;
-    box-shadow: 0 1vh 2vh rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1vw;
+  background-color: #ffffff;
+  padding: 2vh 2vw;
+  border-radius: 5px;
+  box-shadow: 0 1vh 2vh rgba(0, 0, 0, 0.3);
 }
 
 #newtask input {
-    width: 70%;
-    height: 5vh;
-    font-family: 'Poppins', sans-serif;
-    font-size: 2vh;
-    border: 2px solid #d1d3d4;
-    padding: 1vh;
-    color: #111;
-    font-weight: 500;
-    border-radius: 5px;
+  width: 70%;
+  height: vh;
+  font-family: "Poppins", sans-serif;
+  font-size: 2vh;
+  border: 2px solid #d1d3d4;
+  padding: 1vh;
+  color: #111;
+  font-weight: 500;
+  border-radius: 5px;
+  min-width: 20vh;
+  max-width: 50vh;
 }
 
 #newtask input:focus {
-    outline: none;
-    border: 2px solid;
-    border-image: linear-gradient(135deg, #236ac8, #ea7f14) 1;
+  outline: none;
+  border: 2px solid;
+  border-image: linear-gradient(135deg, #236ac8, #ea7f14);
 }
 
 #newtask button {
-    width: 20%;
-    height: 5vh;
-    border-radius: 5px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    font-size: 2vh;
-    background: #d1d3d4;
-    border: none;
-    color: #111;
-    cursor: pointer;
+  width: 20%;
+  height: 5vh;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 2vh;
+  background: #d1d3d4;
+  border: none;
+  color: #111;
+  cursor: pointer;
 }
 
 #newtask button:hover {
-    color: #fff;
-    background: linear-gradient(135deg, #236ac8, #ea7f14);
+  color: #fff;
+  background-color: linear-gradient(135deg, #236ac8, #ea7f14);
 }
 
 #newtask button:active {
-    transform: scale(0.95);
-    background: linear-gradient(135deg, #236ac8, #ea7f14);
-    box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.2);
+  transform: scale(0.95);
+  background-color: linear-gradient(135deg, #236ac8, #ea7f14);
+  box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.2);
 }
 
 /* 할 일 목록 스타일 */
 #tasks {
-    background-color: #ffffff;
-    padding: 5px 20px;
-    margin-top: 20px;
-    margin-bottom: 0;
-    border-radius: 10px;
-    box-shadow: 0 1vh 2vh rgba(0, 0, 0, 0.3);
-    width: 100%;
-    height: 100%;
-    max-height: 15vh; /* 하나의 항목만 보이도록 높이를 제한 */
-    overflow-y: auto; /* 항목이 넘칠 경우 세로 스크롤 활성화 */
+  background-color: #ffffff;
+  padding: 1vh 2vw;
+  margin-top: 3vh;
+  margin-bottom: 0;
+  border-radius: 10px;
+  box-shadow: 0 1vh 2vh rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+  max-height: 15vh; /* 하나의 항목만 보이도록 높이를 제한 */
+  overflow-y: auto; /* 항목이 넘칠 경우 세로 스크롤 활성화 */
 }
 
 .task {
-    background-color: #ffffff;
-    height: 10vh;
-    padding: 5px 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #d1d3d4;
-    cursor: pointer;
+  background-color: #ffffff;
+  height: 5vh;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #d1d3d4;
+  cursor: pointer;
 }
 
 .task span {
-    font-family: 'Poppins', sans-serif;
-    font-size: 15px;
-    font-weight: 400;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
 }
 
 .task button {
-    background-color: #d1d3d4;
-    color: white;
-    height: 80%;
-    width: 40px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    outline: none;
+  background-color: #d1d3d4;
+  color: white;
+  height: 80%;
+  width: 40px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  outline: none;
 }
 
 .task button:hover {
-    background: linear-gradient(135deg, #236ac8, #ea7f14);
+  background: linear-gradient(135deg, #236ac8, #ea7f14);
 }
 
 .task button:active {
-    transform: scale(0.95);
-    background: linear-gradient(135deg, #236ac8, #ea7f14);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transform: scale(0.95);
+  background: linear-gradient(135deg, #236ac8, #ea7f14);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 .clap-emoji {
-    margin-left: 5px;
-    display: inline-block;
-    unicode-bidi: isolate;
-    text-decoration: none;
-    font-style: normal;
-    user-select: none;
-    pointer-events: none;
-    lang: "zxx"; /* 이 요소에 대해 언어를 설정하지 않음 */
-    spellcheck: false;
+  margin-left: 5px;
+  display: inline-block;
+  unicode-bidi: isolate;
+  text-decoration: none;
+  font-style: normal;
+  user-select: none;
+  pointer-events: none;
+  lang: "zxx"; /* 이 요소에 대해 언어를 설정하지 않음 */
+  spellcheck: false;
 }
 
 .clap-emoji::after {
-    content: attr(data-emoji); /* data-emoji 속성에 있는 이모티콘을 추가 */
-    margin-left: 5px;
+  content: attr(data-emoji); /* data-emoji 속성에 있는 이모티콘을 추가 */
+  margin-left: 5px;
 }
 
 /* 완료된 할 일 */
 .completed {
-    color: inherit;
-    animation: sparkle 1s ease-in-out infinite;
+  color: inherit;
+  animation: sparkle 1s ease-in-out infinite;
 }
 
 .completed span {
-    text-decoration: line-through;
-    text-decoration-color: red;
+  text-decoration: line-through;
+  text-decoration-color: red;
 }
 
 .completed .clap-emoji {
-    text-decoration: none; /* 완료된 항목에도 이모티콘에 줄이 그어지지 않도록 함 */
+  text-decoration: none; /* 완료된 항목에도 이모티콘에 줄이 그어지지 않도록 함 */
 }
 
 @keyframes sparkle {
-    0% { color: #fff; }
-    50% { color: #ffd700; }
-    100% { color: #fff; }
+  0% {
+    color: #fff;
+  }
+  50% {
+    color: #ffd700;
+  }
+  100% {
+    color: #fff;
+  }
 }
 
 /* 레이아웃 그리드 */
 .grid-container {
-    display: flex; /* 플렉스 박스를 사용 */
-    justify-content: space-between; /* 두 섹션 사이의 공간을 분배 */
-    align-items: stretch; /* 높이를 동일하게 설정 */
-    width: 52.5%;
-    height: 90vh;;
-    max-height: 50vh; /* 두 섹션의 높이를 90vh로 설정 */
-    gap: 1vw; /* 두 섹션 사이의 간격 */
+  display: flex; /* 플렉스 박스를 사용 */
+  justify-content: space-between; /* 두 섹션 사이의 공간을 분배 */
+  align-items: stretch; /* 높이를 동일하게 설정 */
+  width: 47%;
+  height: 100%;
+  max-height: 100vh; /* 두 섹션의 높이를 90vh로 설정 */
+  gap: 1vw; /* 두 섹션 사이의 간격 */
+  margin-right: auto;
+  margin-left: 5vw;
 }
 
 /* 시계 및 뽀모도로 섹션 */
-#clock, #editor-container {
-    border: 2px solid white;
-    padding: 2vh;
-    flex: 1; /* 플렉스 박스를 사용하여 공간을 동일하게 확장 */
-    background-color: transparent;
-    border-radius: 10px;
-    text-align: center;
-    height: 100%; /* 높이를 부모 컨테이너의 100%로 맞춤 */
+#clock,
+#editor-container {
+  border: 2px solid white;
+  padding: 1vh;
+  flex: 1; /* 플렉스 박스를 사용하여 공간을 동일하게 확장 */
+  background-color: transparent;
+  border-radius: 10px;
+  text-align: center;
+  width: ;
+}
+
+#current-time {
+  margin-top: 3vw;
 }
 
 #clock {
-    text-align: center;
+  text-align: center;
+  width: 50%;
 }
 
 #clock-display {
-    font-size: 4vw;
-    font-weight: bold;
-    background: linear-gradient(135deg, #65afe0, #d2ba59);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-top: 0.5vh;
+  font-size: 5vw;
+  font-weight: bold;
+  background: linear-gradient(135deg, #65afe0, #d2ba59);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 0.5vh;
 }
 
 /* 뽀모도로 타이머 */
 #pomodoro {
-    margin-top: 20px;
-    text-align: center;
+  margin-top: 20px;
+  text-align: center;
 }
 
 #timer-display {
-    font-size: 8vh;
-    margin-bottom: 10px;
-    background: linear-gradient(135deg, #f0e68c, #ff6347);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  font-size: 8vh;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #f0e68c, #ff6347);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 #pomodoro button {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    padding: 10px 20px;
-    background: #236ac8;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    margin: 0 5px;
-    border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 10px 20px;
+  background: #236ac8;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  margin: 0 5px;
+  border-radius: 5px;
 }
 
 #pomodoro button:hover {
-    color: #fff;
-    background: linear-gradient(135deg, #65afe0, #d2ba59);
+  color: #fff;
+  background: linear-gradient(135deg, #65afe0, #d2ba59);
 }
 
 #pomodoro button:active {
-    transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 /* 시간 입력 필드 */
 #time-inputs input {
-    width: 60px;
-    padding: 10px;
-    text-align: center;
-    border: 2px solid transparent;
-    border-image: linear-gradient(135deg, #f0e68c, #ff6347) 1;
-    border-radius: 5px;
-    background-color: transparent;
-    font-size: 2vh;
-    color: black;
-    transition: border-color 0.3s ease;
+  width: 60px;
+  padding: 10px;
+  text-align: center;
+  border: 2px solid transparent;
+  border-image: linear-gradient(135deg, #f0e68c, #ff6347) 1;
+  border-radius: 5px;
+  background-color: transparent;
+  font-size: 1.5vh;
+  color: white;
+  transition: border-color 0.3s ease;
 }
 
 /* 노트 섹션 */
 #editor-container {
-    max-width: 60vw;
-    he
-    margin: 2vh auto;
-    background-color: transparent;
-    padding: 1vh;
-    border-radius: 10px;
-    overflow-y: auto;
+  width: 100%;
+  max-width: 60%;
+  max-height: 50vh;
+  background-color: transparent;
+  border-radius: 10px;
+  overflow-y: auto;
 }
 
 .emoji {
-    font-size: 1.5em;
+  font-size: 1.5em;
 }
 
 .clap-emoji {
-    margin-left: 5px; /* 이모티콘과 텍스트 사이의 간격 */
-    display: inline-block;
-    text-decoration: none; /* 박수 이모티콘에 빨간줄이 생기지 않도록 텍스트 스타일링 제거 */
-    unicode-bidi: isolate; /* 이모티콘과 텍스트의 구분 */
-    font-style: normal; /* 텍스트 스타일을 일반으로 설정 */
+  margin-left: 5px; /* 이모티콘과 텍스트 사이의 간격 */
+  display: inline-block;
+  text-decoration: none; /* 박수 이모티콘에 빨간줄이 생기지 않도록 텍스트 스타일링 제거 */
+  unicode-bidi: isolate; /* 이모티콘과 텍스트의 구분 */
+  font-style: normal; /* 텍스트 스타일을 일반으로 설정 */
 }
 
 .gradient-text {
-    font-size: 50px;
-    background: linear-gradient(135deg, #65afe0, #d2ba59);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
-    margin-left: 10px;
+  font-size: 50px;
+  background: linear-gradient(135deg, #65afe0, #d2ba59);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  margin-left: 10px;
 }
 
 /* Quill 에디터 영역 */
 #editor {
-    height: 150px; /* 고정된 높이로 유지 */
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
-    overflow-y: auto; /* 에디터에 스크롤 추가 */
+  height: 150px; /* 고정된 높이로 유지 */
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  overflow-y: auto; /* 에디터에 스크롤 추가 */
 }
 
 #toolbar {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 /* 제목 입력 필드 */
 #note-title {
-    width: 100%;
-    height: 5%;
-    padding: 10px;
-    margin-bottom: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
+  width: 100%;
+  height: 5%;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
 /* 노트 리스트 */
 #notes-list {
-    display: flex; /* 플렉스박스를 사용하여 가로 배열 */
-    flex-wrap: nowrap; /* 가로로만 배열, 줄바꿈 없음 */
-    height: 80px; /* 높이 제한 */
-    overflow-x: auto; /* 가로 스크롤 활성화 */
-    padding: 10px;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-top: 10px;
-    box-sizing: border-box;
+  display: flex; /* 플렉스박스를 사용하여 가로 배열 */
+  flex-wrap: nowrap; /* 가로로만 배열, 줄바꿈 없음 */
+  height: 80px; /* 높이 제한 */
+  overflow-x: auto; /* 가로 스크롤 활성화 */
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 10px;
+  box-sizing: border-box;
 }
 
 .note-item {
-    min-width: 150px; /* 각 노트 항목의 최소 너비 */
-    max-width: 200px; /* 각 노트 항목의 최대 너비 */
-    margin-right: 10px; /* 각 항목 간의 간격 */
-    height: fit-content;
-    padding: 10px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex-shrink: 0; /* 노트가 줄어들지 않도록 설정 */
-    position: relative; /* 삭제 버튼을 해당 노트 항목 내부에 배치 */
+  min-width: 150px; /* 각 노트 항목의 최소 너비 */
+  max-width: 200px; /* 각 노트 항목의 최대 너비 */
+  margin-right: 10px; /* 각 항목 간의 간격 */
+  height: fit-content;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-shrink: 0; /* 노트가 줄어들지 않도록 설정 */
+  position: relative; /* 삭제 버튼을 해당 노트 항목 내부에 배치 */
 }
 
 /* 삭제 버튼 스타일 */
 .delete-note {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    padding: 5px 5px;
-    background-color: #ff6347; /* 삭제 버튼을 눈에 띄게 설정 */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 5px 5px;
+  background-color: #ff6347; /* 삭제 버튼을 눈에 띄게 설정 */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .delete-note:hover {
-    background-color: #e5533d; /* 호버 상태에서 삭제 버튼 색상 변경 */
+  background-color: #e5533d; /* 호버 상태에서 삭제 버튼 색상 변경 */
 }
 
 .note-item strong {
-    font-size: 16px;
-    display: block;
+  font-size: 16px;
+  display: block;
 }
 
 .note-item p {
-    margin: 5px 0;
-    font-size: 14px;
-    color: #333;
+  margin: 5px 0;
+  font-size: 14px;
+  color: #333;
 }
 
 /* 저장 및 리셋 버튼 스타일 */
-#save-note, #reset-note {
-    display: inline-block;
-    height: auto;
-    padding: 5px 5px;
-    font-size: 15px;
-    background-color: #236ac8;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 5px;
+#save-note,
+#reset-note {
+  display: inline-block;
+  height: auto;
+  padding: 5px 5px;
+  font-size: 15px;
+  background-color: #236ac8;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 5px;
 }
 
-#save-note:hover, #reset-note:hover {
-    background: linear-gradient(135deg, #65afe0, #d2ba59);
+#save-note:hover,
+#reset-note:hover {
+  background: linear-gradient(135deg, #65afe0, #d2ba59);
 }
 
 /* 캘린더만 오른쪽으로 고정시키기 */
 #calendar-container {
-    width: 100%;
-    height: 100%;
-    min-height: 8vh;
-    max-height: 87.2vh;
-    position: absolute; /* 캘린더를 고정 */
-    border: 2px solid white;
-    width: 12vh; /* 캘린더의 너비를 줄여서 오른쪽 공간 확보 */
-    min-width: 80vh; /* 최소 너비 조정 */
-    max-width: 100vh;
-    right: 6vw; /* 오른쪽 공간을 줄이기 위해 right 값을 변경 */
-    top: 12.8vh; /* 상단에서 약간 떨어진 위치에 배치 */
-    display: grid;
-    grid-template-rows: repeat(24, 1fr); /* 시간대 */
-    background-color: transparent;
-    text-align: left;
-    margin-right: -2vh;
-    border-radius: 10px;
-    overflow-y: auto; /* 높이를 넘어갈 경우 스크롤 표시 */
-    overflow-x: hidden; /* 가로 스크롤은 숨김 처리 */
-    flex: 1;
+  width: 40%; /* 뷰포트 너비의 40%로 너비를 설정 */
+  min-width: 30vh; /* 최소 너비를 뷰포트 너비의 40%로 설정 */
+  max-width: 80vh; /* 최대 너비를 뷰포트 너비의 100%로 설정 */
+  height: 86.9%;
+  max-height: 88vh;
+  min-height: 80vh;
+  position: absolute; /* 캘린더를 고정 */
+  border: 2px solid white;
+  right: 5vw; /* 오른쪽에서 5vw 떨어진 위치에 배치 */
+  top: 13.1vh; /* 상단에서 12.8vh 떨어진 위치에 배치 */
+  display: grid;
+  grid-template-rows: repeat(24, 1fr); /* 시간대 */
+  background-color: transparent;
+  grid-template-columns: auto;
+  text-align: left;
+  border-radius: 10px;
+  overflow-y: auto; /* 높이를 넘어갈 경우 스크롤 표시 */
+  overflow-x: hidden; /* 가로 스크롤은 숨김 처리 */
+}
 
 /* 각 시간대 구분을 위한 줄 추가 */
 .time-slot {
-    width: 100%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 0; /* 내부 공백을 없앰 */
-    margin: 0; /* 외부 공백을 없앰 */
-    padding-left: 5px; /* 좌측 패딩만 추가 */
-    background-color: transparent;
-    font-size: 1.5vw;
-    color: white;
-    box-sizing: border-box; /* padding과 border를 height 계산에 포함 */
-    padding-left: 5px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0; /* 내부 공백을 없앰 */
+  margin: 0; /* 외부 공백을 없앰 */
+  padding-left: 5px; /* 좌측 패딩만 추가 */
+  background-color: transparent;
+  font-size: 1.5vw;
+  color: white;
+  box-sizing: border-box; /* padding과 border를 height 계산에 포함 */
+  padding-left: 5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* 마지막 시간대에는 줄을 추가하지 않음 */
 .time-slot:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
-body, html {
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow-x: hidden;
-    font-size: calc(16px + 0.5vw);
-}
-
-#clock, #editor-container, #calendar-container {
-    height: 90vh; /* 두 섹션 모두 동일한 높이로 설정 */
-    width: 80vw;
-}
-
-#calendar-container {
-    position: relative; /* 절대 위치 대신 상대 위치로 변경 */
-    height: 90vh; /* 뽀모도로와 동일한 높이 */
-    min-height: 500px; /* 최소 높이 */
-    max-height: 1000px; /* 최대 높이 */
-    overflow-y: auto; /* 높이를 넘어가면 스크롤 표시 */
-    display: grid;
-    grid-template-rows: repeat(24, 1fr); /* 24시간 스케줄 */
-    width: 100%;
-    max-height: 90vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-    
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  font-size: calc(16px + 0.5vw);
 }
 
 .calendar-task {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 5px;
-    border-radius: 5px;
-    margin-top: 5px;
-    font-size: 14px;
-    color: black;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 5px;
+  font-size: 14px;
+  color: black;
+}
+
+html {
+  font-size: 1vw;
+}
+
+/* Small mobile devices */
+@media (max-width: 600px) {
+  body {
+    font-size: 3.5vw;
   }
-  
-  /* 작은 모바일 장치 (최대 768px) */
-@media (max-width: 768px) {
-    body {
-        font-size: 4vw;
-    }
+
+  #newtask button {
+    width: 40%;
+    font-size: 1.5vh;
+  }
+
+  /* Adjust other elements here */
 }
 
-/* 태블릿 (768px ~ 1024px) */
-@media (min-width: 769px) and (max-width: 1024px) {
-    body {
-        font-size: 2.5vw;
-    }
+/* Small mobile devices */
+@media (max-width: 600px) {
+  body {
+    font-size: 2.5vw; /* Adjust font size for smaller screens */
+  }
+
+  #newtask button {
+    width: 40%;
+  }
 }
 
-/* 작은 데스크탑 화면 (1025px ~ 1440px) */
-@media (min-width: 1025px) and (max-width: 1440px) {
-    body {
-        font-size: 1.5vw;
-    }
+/* Tablets and small desktops */
+@media (min-width: 601px) and (max-width: 1024px) {
+  body {
+    font-size: 1.8vw;
+  }
 }
 
-/* 매우 큰 화면 (1441px 이상) */
-@media (min-width: 1441px) {
-    body {
-        font-size: 1vw;
-    }
+/* Large screens */
+@media (min-width: 1025px) {
+  body {
+    font-size: 1.2rem; /* Use rem for a consistent experience */
+  }
 }
-

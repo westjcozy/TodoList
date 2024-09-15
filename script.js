@@ -8,7 +8,7 @@ document.querySelector("#push").onclick = function () {
   }  else {
     let taskTime = timeInput.value;  // 시간과 분을 포함한 값
     let taskCategory = categoryInput.value;
-
+    let taskId = Date.now();
     // 새로운 일정 추가
     const taskHTML = `
         <div class="task" data-time="${taskTime}" data-category="${taskCategory}">
@@ -24,6 +24,7 @@ document.querySelector("#push").onclick = function () {
     if (calendarTimeSlot) {
       let calendarTask = document.createElement("div");
       calendarTask.classList.add("calendar-task");
+      calendarTask.setAttribute("data-id", taskId); // 고유 ID 추가
       calendarTask.textContent = `${taskInput.value} [${taskCategory}]`;
       calendarTask.style.backgroundColor = getCategoryColor(taskCategory);
       calendarTimeSlot.appendChild(calendarTask);
@@ -51,6 +52,19 @@ function addDeleteFunctionality() {
   var current_tasks = document.querySelectorAll(".delete");
   for (var i = 0; i < current_tasks.length; i++) {
     current_tasks[i].onclick = function () {
+      let taskId = this.parentNode.getAttribute("data-id");
+
+      // 왼쪽 목록에서 해당 ID를 가진 할 일 삭제
+      let taskInLeft = document.querySelector(`.task[data-id="${taskId}"]`);
+      if (taskInLeft) {
+        taskInLeft.remove();
+      }
+
+      // 오른쪽 시간 슬롯에서 해당 ID를 가진 할 일 삭제
+      let taskInCalendar = document.querySelector(`.calendar-task[data-id="${taskId}"]`);
+      if (taskInCalendar) {
+        taskInCalendar.remove();
+      }
       this.parentNode.remove();
     };
   }
