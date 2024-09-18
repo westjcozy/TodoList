@@ -1,4 +1,3 @@
-/* 기본 스타일 리셋 */
 *,
 *:before,
 *:after {
@@ -7,7 +6,6 @@
   box-sizing: border-box;
 }
 
-/* 배경 및 레이아웃 설정 */
 body {
   font-size: 1rem;
   height: 100vh;
@@ -22,7 +20,7 @@ body {
 
 h1 {
   color: #d7dbe0;
-  font-size: 4.2rem; /* 뷰포트 너비에 따라 폰트 크기가 변경됨 */
+  font-size: 4.2rem;
   text-shadow: 3px 3px 3px #938e88;
   text-align: left;
   margin-top: 3vh;
@@ -30,15 +28,14 @@ h1 {
   margin-bottom: 2vh;
 }
 
-/* 할 일 목록 */
 .container {
   border: 2px solid white;
   width: 100%;
   height: 100%;
   max-height: 90vh;
   min-height: 0vh;
-  max-width: 47%; /* 최대 너비를 고정 */
-  min-width: 36%; /* 최소 너비도 동일하게 고정 */
+  max-width: 47%;
+  min-width: 36%;
   padding: 3vh 3vh 3vh 3vh;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
@@ -93,16 +90,15 @@ h1 {
 
 #newtask button:hover {
   color: #fff;
-  background-color: linear-gradient(135deg, #236ac8, #ea7f14);
+  background: linear-gradient(135deg, #236ac8, #ea7f14);
 }
 
 #newtask button:active {
   transform: scale(0.95);
-  background-color: linear-gradient(135deg, #236ac8, #ea7f14);
+  background: linear-gradient(135deg, #236ac8, #ea7f14);
   box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.2);
 }
 
-/* 할 일 목록 스타일 */
 #tasks {
   background-color: #ffffff;
   padding: 1vh 2vw;
@@ -112,8 +108,8 @@ h1 {
   box-shadow: 0 1vh 2vh rgba(0, 0, 0, 0.3);
   width: 100%;
   height: 100%;
-  max-height: 15vh; /* 하나의 항목만 보이도록 높이를 제한 */
-  overflow-y: auto; /* 항목이 넘칠 경우 세로 스크롤 활성화 */
+  max-height: 10vh;
+  overflow-y: auto;
 }
 
 .task {
@@ -162,16 +158,15 @@ h1 {
   font-style: normal;
   user-select: none;
   pointer-events: none;
-  lang: "zxx"; /* 이 요소에 대해 언어를 설정하지 않음 */
+  lang: "zxx";
   spellcheck: false;
 }
 
 .clap-emoji::after {
-  content: attr(data-emoji); /* data-emoji 속성에 있는 이모티콘을 추가 */
+  content: attr(data-emoji);
   margin-left: 5px;
 }
 
-/* 완료된 할 일 */
 .completed {
   color: inherit;
   animation: sparkle 1s ease-in-out infinite;
@@ -183,7 +178,16 @@ h1 {
 }
 
 .completed .clap-emoji {
-  text-decoration: none; /* 완료된 항목에도 이모티콘에 줄이 그어지지 않도록 함 */
+  text-decoration: none;
+}
+
+.calendar-task.completed span {
+  text-decoration: line-through;
+  text-decoration-color: red;
+}
+
+.calendar-task .clap-emoji {
+  margin-left: 5px;
 }
 
 @keyframes sparkle {
@@ -198,29 +202,26 @@ h1 {
   }
 }
 
-/* 레이아웃 그리드 */
 .grid-container {
-  display: flex; /* 플렉스 박스를 사용 */
-  justify-content: space-between; /* 두 섹션 사이의 공간을 분배 */
-  align-items: stretch; /* 높이를 동일하게 설정 */
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
   width: 47%;
   height: 100%;
-  max-height: 100vh; /* 두 섹션의 높이를 90vh로 설정 */
-  gap: 1vw; /* 두 섹션 사이의 간격 */
+  max-height: 100vh;
+  gap: 1vw;
   margin-right: auto;
   margin-left: 5vw;
 }
 
-/* 시계 및 뽀모도로 섹션 */
 #clock,
 #editor-container {
   border: 2px solid white;
   padding: 1vh;
-  flex: 1; /* 플렉스 박스를 사용하여 공간을 동일하게 확장 */
+  flex: 1;
   background-color: transparent;
   border-radius: 10px;
   text-align: center;
-  width: ;
 }
 
 #current-time {
@@ -241,7 +242,6 @@ h1 {
   margin-top: 0.5vh;
 }
 
-/* 뽀모도로 타이머 */
 #pomodoro {
   margin-top: 20px;
   text-align: center;
@@ -277,7 +277,6 @@ h1 {
   transform: scale(0.95);
 }
 
-/* 시간 입력 필드 */
 #time-inputs input {
   width: 60px;
   padding: 10px;
@@ -291,7 +290,6 @@ h1 {
   transition: border-color 0.3s ease;
 }
 
-/* 노트 섹션 */
 #editor-container {
   width: 100%;
   max-width: 60%;
@@ -306,11 +304,11 @@ h1 {
 }
 
 .clap-emoji {
-  margin-left: 5px; /* 이모티콘과 텍스트 사이의 간격 */
+  margin-left: 5px;
   display: inline-block;
-  text-decoration: none; /* 박수 이모티콘에 빨간줄이 생기지 않도록 텍스트 스타일링 제거 */
-  unicode-bidi: isolate; /* 이모티콘과 텍스트의 구분 */
-  font-style: normal; /* 텍스트 스타일을 일반으로 설정 */
+  text-decoration: none;
+  unicode-bidi: isolate;
+  font-style: normal;
 }
 
 .gradient-text {
@@ -322,21 +320,19 @@ h1 {
   margin-left: 10px;
 }
 
-/* Quill 에디터 영역 */
 #editor {
-  height: 150px; /* 고정된 높이로 유지 */
+  height: 150px;
   background-color: white;
   border: 1px solid #ccc;
   padding: 10px;
   border-radius: 5px;
-  overflow-y: auto; /* 에디터에 스크롤 추가 */
+  overflow-y: auto;
 }
 
 #toolbar {
   margin-bottom: 10px;
 }
 
-/* 제목 입력 필드 */
 #note-title {
   width: 100%;
   height: 5%;
@@ -348,12 +344,11 @@ h1 {
   box-sizing: border-box;
 }
 
-/* 노트 리스트 */
 #notes-list {
-  display: flex; /* 플렉스박스를 사용하여 가로 배열 */
-  flex-wrap: nowrap; /* 가로로만 배열, 줄바꿈 없음 */
-  height: 80px; /* 높이 제한 */
-  overflow-x: auto; /* 가로 스크롤 활성화 */
+  display: flex;
+  flex-wrap: nowrap;
+  height: 80px;
+  overflow-x: auto;
   padding: 10px;
   background-color: #f9f9f9;
   border: 1px solid #ccc;
@@ -363,9 +358,9 @@ h1 {
 }
 
 .note-item {
-  min-width: 150px; /* 각 노트 항목의 최소 너비 */
-  max-width: 200px; /* 각 노트 항목의 최대 너비 */
-  margin-right: 10px; /* 각 항목 간의 간격 */
+  min-width: 150px;
+  max-width: 200px;
+  margin-right: 10px;
   height: fit-content;
   padding: 10px;
   background-color: #fff;
@@ -374,17 +369,16 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  flex-shrink: 0; /* 노트가 줄어들지 않도록 설정 */
-  position: relative; /* 삭제 버튼을 해당 노트 항목 내부에 배치 */
+  flex-shrink: 0;
+  position: relative;
 }
 
-/* 삭제 버튼 스타일 */
 .delete-note {
   position: absolute;
   top: 5px;
   right: 5px;
   padding: 5px 5px;
-  background-color: #ff6347; /* 삭제 버튼을 눈에 띄게 설정 */
+  background-color: #ff6347;
   color: white;
   border: none;
   border-radius: 5px;
@@ -392,7 +386,7 @@ h1 {
 }
 
 .delete-note:hover {
-  background-color: #e5533d; /* 호버 상태에서 삭제 버튼 색상 변경 */
+  background-color: #e5533d;
 }
 
 .note-item strong {
@@ -406,7 +400,6 @@ h1 {
   color: #333;
 }
 
-/* 저장 및 리셋 버튼 스타일 */
 #save-note,
 #reset-note {
   display: inline-block;
@@ -426,50 +419,97 @@ h1 {
   background: linear-gradient(135deg, #65afe0, #d2ba59);
 }
 
-/* 캘린더만 오른쪽으로 고정시키기 */
 #calendar-container {
-  width: 40%; /* 뷰포트 너비의 40%로 너비를 설정 */
-  min-width: 30vh; /* 최소 너비를 뷰포트 너비의 40%로 설정 */
-  max-width: 80vh; /* 최대 너비를 뷰포트 너비의 100%로 설정 */
-  height: 86.9%;
-  max-height: 88vh;
-  min-height: 80vh;
-  position: absolute; /* 캘린더를 고정 */
+  width: 40%;
+  min-width: 30vh;
+  max-width: 80vh;
+  height: 100%;
+  max-height: 81.5vh;
+  position: absolute;
   border: 2px solid white;
-  right: 5vw; /* 오른쪽에서 5vw 떨어진 위치에 배치 */
-  top: 13.1vh; /* 상단에서 12.8vh 떨어진 위치에 배치 */
+  right: 5vw;
+  top: 18.5vh;
   display: grid;
-  grid-template-rows: repeat(24, 1fr); /* 시간대 */
+  grid-template-rows: repeat(24, 1fr);
   background-color: transparent;
   grid-template-columns: auto;
   text-align: left;
   border-radius: 10px;
-  overflow-y: auto; /* 높이를 넘어갈 경우 스크롤 표시 */
-  overflow-x: hidden; /* 가로 스크롤은 숨김 처리 */
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
-/* 각 시간대 구분을 위한 줄 추가 */
 .time-slot {
   width: 100%;
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  padding: 0; /* 내부 공백을 없앰 */
-  margin: 0; /* 외부 공백을 없앰 */
-  padding-left: 5px; /* 좌측 패딩만 추가 */
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  padding: 5px;
   background-color: transparent;
+  font-size: 1.2rem;
   font-size: 1.5vw;
   color: white;
-  box-sizing: border-box; /* padding과 border를 height 계산에 포함 */
-  padding-left: 5px;
+  box-sizing: border-box;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* 마지막 시간대에는 줄을 추가하지 않음 */
 .time-slot:last-child {
   border-bottom: none;
 }
+
+.time-slot.drag-over {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.calendar-task {
+  position: relative;
+  margin: 2px;
+  width: 100%;
+  display: inline-flex;
+  justify-content: flex-start;
+  margin-top: 5px;
+  border-radius: 5px;
+  cursor: move;
+  background-color: white;
+  color: white;
+}
+
+.time-slot {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  background-color: transparent;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.calendar-task.dragging {
+  opacity: 0.5;
+}
+
+.task-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3px;
+}
+
+.delete-task {
+  background: transparent;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1em;
+  margin-left: 5px;
+}
+
 body,
 html {
   margin: 0;
@@ -483,20 +523,6 @@ html {
   font-size: calc(16px + 0.5vw);
 }
 
-.calendar-task {
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 5px;
-  border-radius: 5px;
-  margin-top: 5px;
-  font-size: 14px;
-  color: black;
-}
-
-html {
-  font-size: 1vw;
-}
-
-/* Small mobile devices */
 @media (max-width: 600px) {
   body {
     font-size: 3.5vw;
@@ -506,14 +532,11 @@ html {
     width: 40%;
     font-size: 1.5vh;
   }
-
-  /* Adjust other elements here */
 }
 
-/* Small mobile devices */
 @media (max-width: 600px) {
   body {
-    font-size: 2.5vw; /* Adjust font size for smaller screens */
+    font-size: 2.5vw;
   }
 
   #newtask button {
@@ -521,16 +544,14 @@ html {
   }
 }
 
-/* Tablets and small desktops */
 @media (min-width: 601px) and (max-width: 1024px) {
   body {
     font-size: 1.8vw;
   }
 }
 
-/* Large screens */
 @media (min-width: 1025px) {
   body {
-    font-size: 1.2rem; /* Use rem for a consistent experience */
+    font-size: 1.2rem;
   }
 }
